@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Membaca File Json</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $.get("./terkini.json", function (obj) {
+          var str = "<table border=1>";
+
+          str += "<tr><td>No</td><td>Judul Berita</td><td>Kategori</td><td>Waktu dipublish</td><td>Waktu discrapping</td></tr>";
+
+          $.each(obj, function (n, data) {
+            str += "<tr><td>" + (n + 1) + "</td>";
+            str += "<td>" + data.judul + "</td>";
+            str += "<td>" + data.kategori + "</td>";
+            str += "<td>" + data.waktu_publish + "</td>";
+            str += "<td>" + data.waktu_scraping + "</td>;</tr>";
+          });
+
+          str += "</table>";
+          $("#terkini_json").html(str);
+        });
+      });
+    </script>
+  </head>
+  <body>
+      <h1> Bagian Terkini Republika Online </h1>
+      <p> Oleh : Delvito Rahim Derivansyah</p>
+      <p> NIM : 211524039</p>
+      <p> Kelas : 1B - D4 Teknik Informatika</p>
+      <div id="terkini_json"></div>
+  </body>
+</html>
