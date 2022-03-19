@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Scraping Selenium</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $.get("./rankscrap.json", function (obj) {
+          var str = "<table border=1>";
+
+          str += "<tr><td>- Urutan -</td><td>Poster</td><td>Judul</td><td>- Tahun -</td><td>- Rating -</td><td>Waktu discrapping</td></tr>";
+
+          $.each(obj, function (n, movielist) {
+            str += "<td >" + movielist.Rank + "</td>";
+            str += "<td><img src='" + movielist.Image + "'></td>";
+            str += "<td>" + movielist.Judul + "</td>";
+            str += "<td>" + movielist.Tahun + "</td>";
+            str += "<td>" + movielist.Rating + "</td>";
+            str += "<td>" + movielist.Time + "</td></tr>";
+          });
+
+          str += "</table>";
+          $("#rankscrap_json").html(str);
+        });
+      });
+    </script>
+  </head>
+  <body>
+      <h1>100 Film Dengan Rating Tertinggi </h1>
+      <p> Diambil dari web: <a href="https://www.imdb.com/chart/top/" target="_blank">IMDb</a></p>
+      <p> Oleh : Delvito Rahim Derivansyah</p>
+      <p> NIM : 211524039</p>
+      <p> Kelas : 1B - D4 Teknik Informatika</p>
+      <div id="rankscrap_json" ></div>
+  </body>
+</html>
